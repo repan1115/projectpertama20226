@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSIS SMKN 1 Sayung</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset dan Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a5fb4;
+            --secondary: #e95420;
+            --accent: #ff9800;
+            --light: #f5f5f5;
+            --dark: #333;
+            --gray: #777;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 95, 180, 0.85), rgba(233, 84, 32, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .hero-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #e68900;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        /* Activities Section */
+        .activities {
+            background-color: var(--light);
+        }
+        
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .activity-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .activity-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .activity-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .activity-card:hover .activity-img img {
+            transform: scale(1.05);
+        }
+        
+        .activity-content {
+            padding: 20px;
+        }
+        
+        .activity-content h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .activity-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Pengurus Section */
+        .pengurus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .pengurus-card {
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .pengurus-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid var(--light);
+        }
+        
+        .pengurus-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .pengurus-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .pengurus-card p {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .pengurus-card .jabatan {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* News Section */
+        .news {
+            background-color: var(--light);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .news-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .news-content h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .news-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            background-color: var(--light);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .footer-logo p {
+            opacity: 0.8;
+        }
+        
+        .footer-links h4,
+        .footer-social h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h4:after,
+        .footer-social h4:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s;
+                visibility: hidden;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <!-- Logo placeholder - dalam implementasi nyata ganti dengan logo sekolah -->
+                    <div style="background-color: var(--primary); color: white; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem;">
+                        OSIS
+                    </div>
+                </div>
+                <div class="logo-text">
+                    <h1>OSIS SMKN 1 SAYUNG</h1>
+                    <p>Organisasi Siswa Intra Sekolah</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#activities">Kegiatan</a></li>
+                    <li><a href="#pengurus">Pengurus</a></li>
+                    <li><a href="#news">Berita</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>Selamat Datang di Website OSIS SMKN 1 Sayung</h2>
+            <p>Organisasi Siswa Intra Sekolah (OSIS) SMK Negeri 1 Sayung merupakan wadah bagi siswa untuk mengembangkan potensi, kreativitas, dan kepemimpinan demi kemajuan sekolah dan masyarakat.</p>
+            <a href="#about" class="btn">Pelajari Lebih Lanjut</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang OSIS</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kegiatan OSIS">
+                </div>
+                <div class="about-text">
+                    <h3>Visi & Misi OSIS SMKN 1 Sayung</h3>
+                    <p><strong>Visi:</strong> Menjadi organisasi siswa yang unggul, kreatif, dan berkarakter untuk mewujudkan SMKN 1 Sayung sebagai sekolah berprestasi dan berbudaya.</p>
+                    <p><strong>Misi:</strong></p>
+                    <p>1. Meningkatkan ketaqwaan kepada Tuhan Yang Maha Esa.</p>
+                    <p>2. Mengembangkan potensi akademik dan non-akademik siswa.</p>
+                    <p>3. Menyelenggarakan kegiatan yang mendukung pengembangan karakter dan kreativitas siswa.</p>
+                    <p>4. Membangun hubungan yang harmonis antar siswa, guru, dan masyarakat.</p>
+                    <p>5. Mewujudkan lingkungan sekolah yang bersih, sehat, dan nyaman.</p>
+                    <p>OSIS SMKN 1 Sayung telah berdiri sejak tahun 1990 dan terus berkontribusi dalam berbagai kegiatan sekolah dan masyarakat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="activities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Kegiatan OSIS</h2>
+            </div>
+            
+            <div class="activity-grid">
+                <div class="activity-card">
+                    <div class="activity-img">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Pentas Seni">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Pentas Seni (PENSI)</h3>
+                        <p>Kegiatan tahunan yang menampilkan bakat seni siswa SMKN 1 Sayung dalam bidang musik, tari, teater, dan seni rupa.</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Karya Ilmiah">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Lomba Karya Ilmiah</h3>
+                        <p>Memfasilitasi siswa untuk mengembangkan kemampuan penelitian dan menciptakan inovasi melalui karya ilmiah.</p>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <div class="activity-img">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Bakti Sosial">
+                    </div>
+                    <div class="activity-content">
+                        <h3>Bakti Sosial</h3>
+                        <p>Kegiatan sosial yang dilaksanakan untuk membantu masyarakat sekitar dan menumbuhkan rasa kepedulian sosial.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pengurus Section -->
+    <section id="pengurus" class="pengurus">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pengurus OSIS</h2>
+            </div>
+            
+            <div class="pengurus-grid">
+                <div class="pengurus-card">
+                    <div class="pengurus-img">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ketua OSIS">
+                    </div>
+                    <h4>Rizky Pratama</h4>
+                    <p>Ketua OSIS</p>
+                    <p class="jabatan">Jurusan Teknik Komputer Jaringan</p>
+                </div>
+                
+                <div class="pengurus-card">
+                    <div class="pengurus-img">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Wakil Ketua OSIS">
+                    </div>
+                    <h4>Siti Aisyah</h4>
+                    <p>Wakil Ketua OSIS</p>
+                    <p class="jabatan">Jurusan Akuntansi</p>
+                </div>
+                
+                <div class="pengurus-card">
+                    <div class="pengurus-img">
+                        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Sekretaris">
+                    </div>
+                    <h4>Dimas Aditya</h4>
+                    <p>Sekretaris</p>
+                    <p class="jabatan">Jurusan Administrasi Perkantoran</p>
+                </div>
+                
+                <div class="pengurus-card">
+                    <div class="pengurus-img">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Bendahara">
+                    </div>
+                    <h4>Maya Indah</h4>
+                    <p>Bendahara</p>
+                    <p class="jabatan">Jurusan Akuntansi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="news">
+        <div class="container">
+            <div class="section-title">
+                <h2>Berita Terbaru</h2>
+            </div>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Peringatan Hari Sumpah Pemuda">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">25 Oktober 2023</span>
+                        <h3>Peringatan Hari Sumpah Pemuda 2023</h3>
+                        <p>OSIS SMKN 1 Sayung sukses menyelenggarakan serangkaian acara untuk memperingati Hari Sumpah Pemuda dengan tema "Pemuda Bersatu, Indonesia Maju".</p>
+                        <a href="#" class="read-more">Baca Selengkapnya →</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Workshop Kewirausahaan">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">12 Oktober 2023</span>
+                        <h3>Workshop Kewirausahaan untuk Siswa</h3>
+                        <p>OSIS bekerja sama dengan alumni sukses mengadakan workshop kewirausahaan untuk mengembangkan jiwa wirausaha siswa sejak dini.</p>
+                        <a href="#" class="read-more">Baca Selengkapnya →</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1176&q=80" alt="Turnamen Futsal">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">5 Oktober 2023</span>
+                        <h3>Turnamen Futsal Antar Kelas</h3>
+                        <p>Turnamen futsal yang diadakan OSIS berhasil mempererat tali persaudaraan antar siswa dan menumbuhkan semangat sportivitas.</p>
+                        <a href="#" class="read-more">Baca Selengkapnya →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Alamat</h4>
+                            <p>Jalan Raya Sayung No. 123, Sayung, Demak, Jawa Tengah</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Telepon</h4>
+                            <p>(024) 1234-5678</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>osis@smkn1sayung.sch.id</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Jumat: 08.00 - 15.00 WIB</p>
+                            <p>Sabtu: 08.00 - 12.00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <form id="messageForm">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subjek</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <h3>OSIS SMKN 1 SAYUNG</h3>
+                    <p>Organisasi Siswa Intra Sekolah SMK Negeri 1 Sayung, Demak, Jawa Tengah.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang OSIS</a></li>
+                        <li><a href="#activities">Kegiatan</a></li>
+                        <li><a href="#pengurus">Pengurus</a></li>
+                        <li><a href="#news">Berita</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 OSIS SMKN 1 Sayung. Semua Hak Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Form submission
+        document.getElementById('messageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah berhasil dikirim. Kami akan menghubungi Anda segera.');
+            this.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
